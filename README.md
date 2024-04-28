@@ -4,7 +4,9 @@ description
 
 #zad1 git commit git commit
 
-#zad2 git branch bugFix git checkout bugFix #zad3 git branch bugFix git checkout bugFix git commit fit checkout main fit commit git merge bugFix
+#zad2 git branch bugFix git checkout bugFix
+
+#zad3 git branch bugFix git checkout bugFix git commit fit checkout main fit commit git merge bugFix
 
 #zad4 git branch bugFix git checkout bugFix git commit git checkout main git commit git checkout bugFix git rebase main 
 

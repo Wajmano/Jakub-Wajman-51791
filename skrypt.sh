@@ -1,4 +1,5 @@
 #!/bin/bash
+<<<<<<< Updated upstream
 show_date(){
     date
 }
@@ -31,5 +32,63 @@ case "$1" in
     *)
     echo "Nieznana opcja: $1"
     show_help
+=======
+
+pokaz_date(){
+    date
+}
+
+stworz_logi(){
+    for i in $(seq 1 $1); do
+        echo "log$i.txt - Utworzone przez skrypt script.sh dnia $(date)" > "log$i.txt"
+    done
+}
+
+pokaz_pomoc(){
+    echo "Dostępne opcje:"
+    echo "--date, -d: wyświetl dzisiejszą datę"
+    echo "--logs, -l: utwórz 100 plików dziennika logi.txt, ponumerowanych od 1 do 100"
+    echo "--logs 30, -l 30: utwórz określoną liczbę plików dziennika, podobnie jak powyżej, ale z możliwością określenia liczby plików"
+    echo "--help, -h: wyświetl wszystkie dostępne opcje"
+    echo "--init, -i: sklonuj repozytorium"
+    echo "--error, -e: utwórz pliki błędów errorx/errorx.txt"
+}
+
+inicjalizuj_repozytorium() {
+    git clone https://github.com/Wajmano/Jakub-Wajman-51791/blob/main/skrypt.sh
+    nazwa_repo=$(basename "https://github.com/Wajmano/Jakub-Wajman-51791/blob/main/skrypt.sh" .git)
+    export PATH=$PATH:$(pwd)/$nazwa_repo
+    echo "Repozytorium $nazwa_repo zostało sklonowane i dodane do PATH"
+}
+
+stworz_bledy(){
+    mkdir -p errorx
+    for i in $(seq 1 ${1:-100}); do
+        echo "error$i.txt - utworzone przez skrypt script.sh" > "errorx/error$i.txt"
+    done
+}
+
+case "$1" in
+    --date|-d)
+    pokaz_date
+    ;;
+    --logs|-l)
+    ilosc=${2:-100}
+    stworz_logi $ilosc
+    ;;
+    --help|-h)
+    pokaz_pomoc
+    ;;
+    --error|-e)
+    ilosc=${2:-100}
+    stworz_bledy $ilosc
+    ;;
+    --init|-i)
+    inicjalizuj_repozytorium
+    ;;
+    *)
+    echo "Nieznana opcja: $1"
+    pokaz_pomoc
+>>>>>>> Stashed changes
     ;;
 esac
